@@ -3,38 +3,50 @@ package com.plurasight;
 import java.util.Scanner;
 
 public class payrollCalculater {
-
+    static Scanner myScanner = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in);
 
-        System.out.println("###   Welcome  ###");
-
-        //Take the First name
-        System.out.println("Enter First Name: ");
-        String firstName = myScanner.nextLine();
-
-
-        //Take the last name
-        System.out.println("Enter Last Name: ");
-        String lastName = myScanner.nextLine();
+        //get the user name using the function and assigning it to a variable
+        String name = fullName();
 
         //take the input for the hours worked
-        System.out.println("Enter hours worked.");
-        double hoursWorked = myScanner.nextDouble();
+        double hoursWorked = hoursWorked();
 
-        //Take the input for the pay rate
-        System.out.println("Enter pay rate.");
-        double payRate = myScanner.nextDouble();
+        //call the function to get the payRate and store it in the variable
+        double payRate = payRate();
 
         //find the gross pay by multiply the payRate and hoursWorked
         double grossPay = payRate * hoursWorked;
 
-
-        //Display the name and the gross pay
-        System.out.println("Name: "+ (firstName + " " + lastName));
-        System.out.println("Gross pay:  $" + grossPay);
+        //print the user's name and its payRate
+        printInfo(name,grossPay);
 
     }
+    public static void printInfo(String name, double grossPay){
+        //Display the name and the gross pay
+        System.out.println("Name: "+ name);
+        System.out.println("Gross pay:  $" + grossPay);
+    }
+
+    public static String fullName(){
+        System.out.println("Enter Full Name: ");
+        String fullName = myScanner.nextLine();
+        return fullName;
+    }
+
+    public static double hoursWorked(){
+        //take the input for the hours worked
+        System.out.println("Enter hours worked.");
+        double hoursWorked = myScanner.nextDouble();
+        return hoursWorked;
+    }
+
+    public static double payRate(){
+        System.out.println("Enter the payRate");
+        double payRate = myScanner.nextDouble();
+        return payRate;
+    }
+
 
 
 }
