@@ -15,12 +15,29 @@ public class payrollCalculater {
         //call the function to get the payRate and store it in the variable
         double payRate = payRate();
 
+        //calculate the overtime payrate
+        double overTime = oT(hoursWorked, payRate);
+
+
         //find the gross pay by multiply the payRate and hoursWorked
-        double grossPay = payRate * hoursWorked;
+        double grossPay = (payRate * hoursWorked) + overTime;
+
+
 
         //print the user's name and its payRate
         printInfo(name,grossPay);
 
+    }
+
+
+    //calculate the overtime payrate
+    public static double oT(double hours,double payRate){
+        if(hours > 40){
+            double overTimeAmount = (hours - 40) * (payRate * 1.5);
+            return overTimeAmount;
+        }else{
+            return 0;
+        }
     }
     public static void printInfo(String name, double grossPay){
         //Display the name and the gross pay
